@@ -211,11 +211,11 @@
     // Delegate to the actual fetch method and store the attributes in the cache
     var jqXHR = superMethods.modelFetch.apply(this, arguments);
     // resolve the returned promise when the AJAX call completes
-    jqXHR.done( _.bind(deferred.resolve, this, this) )
+    jqXHR.done( _.bind(deferred.resolve, this) )
       // Set the new data in the cache
       .done( _.bind(Backbone.fetchCache.setCache, null, this, opts) )
       // Reject the promise on fail
-      .fail( _.bind(deferred.reject, this, this) );
+      .fail( _.bind(deferred.reject, this) );
 
     deferred.abort = jqXHR.abort;
 
@@ -305,11 +305,11 @@
     // Delegate to the actual fetch method and store the attributes in the cache
     var jqXHR = superMethods.collectionFetch.apply(this, arguments);
     // resolve the returned promise when the AJAX call completes
-    jqXHR.done( _.bind(deferred.resolve, this, this) )
+    jqXHR.done( _.bind(deferred.resolve, this) )
       // Set the new data in the cache
       .done( _.bind(Backbone.fetchCache.setCache, null, this, opts) )
       // Reject the promise on fail
-      .fail( _.bind(deferred.reject, this, this) );
+      .fail( _.bind(deferred.reject, this) );
 
     deferred.abort = jqXHR.abort;
 
